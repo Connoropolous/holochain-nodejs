@@ -21,9 +21,10 @@ jobs:
       - choco upgrade yarn
       - export PATH="/c/Program Files (x86)/Yarn/bin:/c/Program Files (x86)/Nodist/bin:$PATH"
     install:
+      - ls "/c/Program Files"
       - export NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH"
       - export NODIST_PREFIX="/c/Program Files (x86)\Nodist"
-      - export NODIST_X64=0
+      - export NODIST_X64=1
       - nodist add $TRAVIS_NODE_VERSION
       - nodist $TRAVIS_NODE_VERSION
       - node -e "console.log(process.argv[0], process.arch, process.versions)"
