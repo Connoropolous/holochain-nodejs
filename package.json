@@ -14,8 +14,7 @@
     "win32"
   ],
   "cpu": [
-    "x64",
-    "ia32"
+    "x64"
   ],
   "scripts": {
     "compile": "neon build --release",

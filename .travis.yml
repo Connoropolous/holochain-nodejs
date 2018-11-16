@@ -26,8 +26,8 @@ jobs:
       - export NODIST_X64=0
       - nodist add $TRAVIS_NODE_VERSION
       - nodist $TRAVIS_NODE_VERSION
+      - node -e "console.log(process.argv[0], process.arch, process.versions)"
       - rustup component add rustfmt-preview
-      - rustup target add i686-pc-windows-msvc
       # bring in holochain-rust for prebuilt 4.1 zmq binary
       - git clone https://github.com/holochain/holochain-rust.git
       - yarn install --ignore-scripts
