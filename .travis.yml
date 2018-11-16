@@ -67,8 +67,6 @@ jobs:
 install:
   - choco install nodist
   - choco install yarn
-  - Install-ChocolateyPath -PathToInstall "C:\ProgramData\Chocolatey\nodist"
-  - Install-ChocolateyPath -PathToInstall "C:\ProgramData\Chocolatey\yarn"
   - refreshenv
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION
