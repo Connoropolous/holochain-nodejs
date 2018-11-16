@@ -67,6 +67,7 @@ jobs:
 install:
   - choco install nodist
   - choco install yarn
+  - powershell
   - refreshenv
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION
