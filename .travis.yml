@@ -1,7 +1,6 @@
 sudo: true
-language: shell
-#rust:
-#- nightly
+language: rust
+rust: nightly
 
 # all unlabeled jobs run at test. Only if all "test" jobs finish, will the publish job run
 stages:
