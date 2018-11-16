@@ -68,7 +68,9 @@ install:
   - choco install nodist
   # - choco install yarn
   - ls "/c/Program Files (x86)/Nodist/bin"
-  - echo $PATH
+  - export NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH"
+  - export NODIST_PREFIX="/c/Program Files (x86)\Nodist"
+  - export NODIST_X64=0
   - export PATH="/c/Program Files (x86)/Nodist/bin:$PATH"
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
