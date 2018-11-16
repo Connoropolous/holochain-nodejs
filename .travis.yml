@@ -11,6 +11,7 @@ jobs:
     rust: nightly-2018-10-12-x86_64-pc-windows-msvc
     os: windows
     env:
+    - RUST_BACKTRACE=1
     - TRAVIS_NODE_VERSION="10"
     - SKIP_DEPLOY=0
     - LIBZMQ_PREFIX=C:\\Users\\travis\\build\\Connoropolous\\holochain-nodejs\\holochain-rust\\vendor\\zmq
@@ -26,7 +27,7 @@ jobs:
       - nodist add $TRAVIS_NODE_VERSION
       - nodist $TRAVIS_NODE_VERSION
       - rustup component add rustfmt-preview
-      - rustup target add x86_64-pc-windows-msvc
+      - rustup target add i686-pc-windows-msvc
       # bring in holochain-rust for prebuilt 4.1 zmq binary
       - git clone https://github.com/holochain/holochain-rust.git
       - yarn install --ignore-scripts
