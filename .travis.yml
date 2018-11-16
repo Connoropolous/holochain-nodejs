@@ -91,7 +91,7 @@ cache:
     directories:
         - node_modules
 before_script:
-    - rustup component add rustfmt-preview
+#    - rustup component add rustfmt-preview
     - yarn install --ignore-scripts
     - nodist add %TRAVIS_NODE_VERSION%
     - nodist %TRAVIS_NODE_VERSION%
