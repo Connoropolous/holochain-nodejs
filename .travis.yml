@@ -45,6 +45,7 @@ jobs:
     env:
     - TRAVIS_NODE_VERSION="8"
     - SKIP_DEPLOY=0
+    - LIBZMQ_PREFIX=C:\\Users\\travis\\build\\holochain\\holochain-nodejs\\holochain-rust\\vendor\\zmq
     if: tag =~ /^v\d+\.\d+\.\d+/ OR branch = master OR type = pull_request
 
   # 
@@ -64,19 +65,21 @@ jobs:
   #     - node publish.js --publish
 
 install:
+  - choco install python2
   - choco install nodist
   - choco upgrade yarn
-  - ls "/c/Program Files"
-  - ls "/c/Program Files (x86)/Yarn"
   - export NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH"
   - export NODIST_PREFIX="/c/Program Files (x86)\Nodist"
   - export NODIST_X64=0
-  - export PATH="/c/Program Files (x86)/Yarn/bin:/c/Program Files (x86)/Nodist/bin:$PATH"
+  - export PATH="/c/Python27:/c/Python27/Scripts:/c/Program Files (x86)/Yarn/bin:/c/Program Files (x86)/Nodist/bin:$PATH"
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION
   - yarn install --ignore-scripts
   - rustup component add rustfmt-preview
   - rustup target add i686-pc-windows-msvc
+  # bring in holochain-rust for prebuilt 4.1 zmq binary
+  - git clone https://github.com/holochain/holochain-rust.git
+
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   #     echo "deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/xUbuntu_14.04/ ./" >> /etc/apt/sources.list;
@@ -103,6 +106,7 @@ cache:
 
 script:
     # - pushd native/ && cargo fmt -- --check && popd
+    - PATH=$PATH:/c/Users/travis/build/holochain/holochain-nodejs/holochain-rust/vendor/zmq/bin
     - node publish.js
 
 # deploy the node-pre-gyp binary to github releases so it's there when the npm package is installed
