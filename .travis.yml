@@ -32,7 +32,7 @@ jobs:
       # dep for neon, found at https://guides.neon-bindings.com/getting-started/
       # - yarn config set python python2.7
       - yarn install --ignore-scripts
-      - npm install --global --vs2015 --production windows-build-tools
+      - npm install --scripts-prepend-node-path --global --vs2015 --production windows-build-tools
       - yarn config set msvs_version 2015 --global
     script:
       - PATH=$PATH:/c/Users/travis/build/Connoropolous/holochain-nodejs/holochain-rust/vendor/zmq/bin
