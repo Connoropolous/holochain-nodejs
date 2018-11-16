@@ -1,6 +1,6 @@
 sudo: true
 language: rust
-rust: nightly
+rust: nightly-2018-10-12-x86_64-pc-windows-msvc
 
 # all unlabeled jobs run at test. Only if all "test" jobs finish, will the publish job run
 stages:
