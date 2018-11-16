@@ -78,8 +78,9 @@ install:
   - rustup component add rustfmt-preview
   - rustup target add i686-pc-windows-msvc
   # bring in holochain-rust for prebuilt 4.1 zmq binary
-  - git clone -b develop --single-branch https://github.com/holochain/holochain-rust.git
-  - ls
+  - git clone https://github.com/holochain/holochain-rust.git
+  # dep for neon, found at https://guides.neon-bindings.com/getting-started/
+  - sudo npm install --global --production windows-build-tools
 
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
