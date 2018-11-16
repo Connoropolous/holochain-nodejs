@@ -69,8 +69,7 @@ install:
   # - choco install yarn
   - ls "/c/Program Files (x86)/Nodist/bin"
   - echo $PATH
-  - cat ~/.bashrc
-  - source ~/.bashrc
+  - export PATH="/c/Program Files (x86)/Nodist/bin:$PATH"
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
   #     echo "deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/xUbuntu_14.04/ ./" >> /etc/apt/sources.list;
@@ -96,7 +95,7 @@ cache:
         - node_modules
 before_script:
 #    - rustup component add rustfmt-preview
-    - yarn install --ignore-scripts
+    # - yarn install --ignore-scripts
     - nodist add $TRAVIS_NODE_VERSION
     - nodist $TRAVIS_NODE_VERSION
 script:
