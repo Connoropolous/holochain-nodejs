@@ -65,8 +65,9 @@ jobs:
   #     - node publish.js --publish
 
 install:
-  # - choco install nodist
+  - choco install nodist
   # - choco install yarn
+  - ls /c/ProgramData/chocolatey
   - echo $PATH
   - cat ~/.bashrc
   - source ~/.bashrc
