@@ -67,9 +67,7 @@ jobs:
 install:
   - choco install nodist
   # - choco install yarn
-  - ls /c
-  - ls "/c/Program Files"
-  - ls "/c/Program Files (x86)"
+  - ls "/c/Program Files (x86)/Nodist"
   - echo $PATH
   - cat ~/.bashrc
   - source ~/.bashrc
