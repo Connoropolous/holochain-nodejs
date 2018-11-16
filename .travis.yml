@@ -73,9 +73,9 @@ install:
   - export NODIST_PREFIX="/c/Program Files (x86)\Nodist"
   - export NODIST_X64=0
   - export PATH="/c/Program Files (x86)/Yarn/bin:/c/Program Files (x86)/Nodist/bin:$PATH"
-  - yarn install --ignore-scripts
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION
+  - yarn install --ignore-scripts
   - rustup component add rustfmt-preview
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
