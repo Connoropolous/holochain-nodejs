@@ -66,13 +66,13 @@ jobs:
 
 install:
   - choco install nodist
-  - choco install yarn
+  - choco upgrade yarn
   - ls "/c/Program Files"
-  - ls "/c/Program Files (x86)"
+  - ls "/c/Program Files (x86)/Yarn"
   - export NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH"
   - export NODIST_PREFIX="/c/Program Files (x86)\Nodist"
   - export NODIST_X64=0
-  - export PATH="/c/Program Files (x86)/Nodist/bin:$PATH"
+  - export PATH="/c/Program Files (x86)/Yarn/bin:/c/Program Files (x86)/Nodist/bin:$PATH"
   - yarn install --ignore-scripts
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION
