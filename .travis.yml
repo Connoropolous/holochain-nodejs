@@ -1,7 +1,6 @@
 sudo: true
-language: shell
-  # rust
-# rust: nightly-2018-10-12-x86_64-pc-windows-msvc
+language: rust
+rust: nightly-2018-10-12-x86_64-pc-windows-msvc
 
 # all unlabeled jobs run at test. Only if all "test" jobs finish, will the publish job run
 stages:
@@ -66,22 +65,21 @@ jobs:
   #     - node publish.js --publish
 
 install:
-  # - choco install python2
+  - choco install python2
   - choco install nodist
-  # - choco upgrade yarn
+  - choco upgrade yarn
   - export NODE_PATH="/c/Program Files (x86)\Nodist\bin\node_modules;$NODE_PATH"
   - export NODIST_PREFIX="/c/Program Files (x86)\Nodist"
   - export NODIST_X64=0
   - export PATH="/c/Python27:/c/Python27/Scripts:/c/Program Files (x86)/Yarn/bin:/c/Program Files (x86)/Nodist/bin:$PATH"
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION
-  # - yarn install --ignore-scripts
-  # - rustup component add rustfmt-preview
-  # - rustup target add i686-pc-windows-msvc
+  - rustup component add rustfmt-preview
+  - rustup target add i686-pc-windows-msvc
   # bring in holochain-rust for prebuilt 4.1 zmq binary
-  # - git clone https://github.com/holochain/holochain-rust.git
+  - git clone https://github.com/holochain/holochain-rust.git
   # dep for neon, found at https://guides.neon-bindings.com/getting-started/
-  - npm install --global --scripts-prepend-node-path=true --production windows-build-tools
+  - yarn config set python python2.7
 
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
   # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
