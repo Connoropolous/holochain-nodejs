@@ -26,13 +26,14 @@ jobs:
       - nodist add $TRAVIS_NODE_VERSION
       - nodist $TRAVIS_NODE_VERSION
       - rustup component add rustfmt-preview
-      - rustup target add i686-pc-windows-msvc
+      - rustup target add x86_64-pc-windows-msvc
       # bring in holochain-rust for prebuilt 4.1 zmq binary
       - git clone https://github.com/holochain/holochain-rust.git
       - yarn install --ignore-scripts
       - npm install --scripts-prepend-node-path=true --global --vs2015 --production windows-build-tools
       # dep for neon, found at https://guides.neon-bindings.com/getting-started/
       - yarn config set python python2.7
+      - npm config set msvs_version 2015
       - yarn config set msvs_version 2015 --global
     script:
       - PATH=$PATH:/c/Users/travis/build/Connoropolous/holochain-nodejs/holochain-rust/vendor/zmq/bin
