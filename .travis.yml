@@ -65,8 +65,8 @@ jobs:
   #     - node publish.js --publish
 
 install:
-  - powershell -File "./powershell/install_nodist.ps1"
-  - powershell -File "./powershell/install_yarn.ps1"
+  - powershell -executionpolicy -bypass -File "./powershell/install_nodist.ps1"
+  - powershell -executionpolicy -bypass -File "./powershell/install_yarn.ps1"
   - nodist add $TRAVIS_NODE_VERSION
   - nodist $TRAVIS_NODE_VERSION"
   # configuration borrowed from holochain-rust Makefile, showing how to install zmq for ubuntu trusty on travis
