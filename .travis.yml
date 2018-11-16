@@ -33,10 +33,11 @@ jobs:
       - git clone https://github.com/holochain/holochain-rust.git
       - yarn install --ignore-scripts
       - npm install --scripts-prepend-node-path=true --global --vs2015 --production windows-build-tools
-      # dep for neon, found at https://guides.neon-bindings.com/getting-started/
+      # deps for neon, found at https://guides.neon-bindings.com/getting-started/
       - yarn config set python python2.7
       - npm config set msvs_version 2015
       - yarn config set msvs_version 2015 --global
     script:
       - PATH=$PATH:/c/Users/travis/build/Connoropolous/holochain-nodejs/holochain-rust/vendor/zmq/bin
+      - cat ./node_modules/.bin/node-pre-gyp
       - node publish.js
